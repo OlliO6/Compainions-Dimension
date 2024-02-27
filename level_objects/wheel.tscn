@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://76ntssdyopcx"]
+
+[ext_resource type="Texture2D" uid="uid://bkj1uvbralm8x" path="res://wheel/wheel.png" id="1_bvwry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_74bq2"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv2r3"]
+atlas = ExtResource("1_bvwry")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa1w8"]
+atlas = ExtResource("1_bvwry")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbxjo"]
+atlas = ExtResource("1_bvwry")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u17u3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv2r3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa1w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbxjo")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 5.0
+}]
+
+[node name="Wheel" type="RigidBody2D"]
+position = Vector2(-40, 6)
+collision_layer = 4
+collision_mask = 5
+constant_torque = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_74bq2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.662745, 0.392157, 0.721569, 1)
+sprite_frames = SubResource("SpriteFrames_u17u3")
+animation = &"roll"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.235225

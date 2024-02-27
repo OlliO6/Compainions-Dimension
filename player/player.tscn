@@ -97,7 +97,8 @@ script = ExtResource("3_vy477")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.509804, 0.635294, 0.356863, 1)
 sprite_frames = SubResource("SpriteFrames_j6wfr")
-animation = &"fall"
+animation = &"idle"
+autoplay = "idle"
 offset = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
