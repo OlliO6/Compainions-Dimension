@@ -1,7 +1,41 @@
-[gd_scene format=3 uid="uid://bq2tfprdxdd3"]
+[gd_scene load_steps=4 format=3 uid="uid://bq2tfprdxdd3"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_t2ycg"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_wbjn8"]
+[ext_resource type="PackedScene" uid="uid://cncdidyn78bag" path="res://player/player.tscn" id="3_h3th6"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("1_t2ycg")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("2_wbjn8")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 2
+follow_target = NodePath("../Player")
+follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/damping = false
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = false
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="Player" parent="." instance=ExtResource("3_h3th6")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-21, 18, 44, 18, 44, 4, 81, 4, 81, 59, -25, 59)

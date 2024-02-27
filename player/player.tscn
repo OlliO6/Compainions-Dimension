@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cncdidyn78bag"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_a0pjx"]
+[ext_resource type="Script" path="res://components/state_machine.gd" id="2_6hmt5"]
+[ext_resource type="Script" path="res://components/state.gd" id="3_vy477"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pyf4"]
+size = Vector2(8, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_a0pjx")
+movement_speed = 50.0
+jump_velocity = 50.0
+acceleration = 0.15
+deceleration = 0.1
+air_acceleration = 0.05
+air_deceleration = 0.05
+gravity = 120.0
+jump_gravity = 90.0
+jump_cancel_strenght = 0.3
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("2_6hmt5")
+start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_vy477")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("3_vy477")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("3_vy477")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("3_vy477")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5pyf4")
+
+[node name="JumpBuffer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.15
+one_shot = true
+
+[node name="JumpLenience" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[connection signal="state_switched" from="StateMachine" to="." method="_on_state_machine_state_switched"]
