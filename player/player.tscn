@@ -1,11 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://cncdidyn78bag"]
+[gd_scene load_steps=12 format=3 uid="uid://cncdidyn78bag"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a0pjx"]
 [ext_resource type="Script" path="res://components/state_machine.gd" id="2_6hmt5"]
 [ext_resource type="Script" path="res://components/state.gd" id="3_vy477"]
+[ext_resource type="Texture2D" uid="uid://bw1cfgkugd7i6" path="res://player/player.png" id="4_yb682"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m24vn"]
+atlas = ExtResource("4_yb682")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pigsv"]
+atlas = ExtResource("4_yb682")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbq8n"]
+atlas = ExtResource("4_yb682")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8w6e"]
+atlas = ExtResource("4_yb682")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5gpq"]
+atlas = ExtResource("4_yb682")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6wfr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m24vn")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pigsv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbq8n")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8w6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5gpq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pyf4"]
-size = Vector2(8, 16)
+size = Vector2(6, 8)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_a0pjx")
@@ -35,7 +94,14 @@ script = ExtResource("3_vy477")
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("3_vy477")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.509804, 0.635294, 0.356863, 1)
+sprite_frames = SubResource("SpriteFrames_j6wfr")
+animation = &"fall"
+offset = Vector2(0, -5)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_5pyf4")
 
 [node name="JumpBuffer" type="Timer" parent="."]
@@ -49,3 +115,7 @@ wait_time = 0.1
 one_shot = true
 
 [connection signal="state_switched" from="StateMachine" to="." method="_on_state_machine_state_switched"]
+[connection signal="state_entered" from="StateMachine/Idle" to="AnimatedSprite2D" method="play" binds= ["idle"]]
+[connection signal="state_entered" from="StateMachine/Run" to="AnimatedSprite2D" method="play" binds= ["run"]]
+[connection signal="state_entered" from="StateMachine/Jump" to="AnimatedSprite2D" method="play" binds= ["jump"]]
+[connection signal="state_entered" from="StateMachine/Fall" to="AnimatedSprite2D" method="play" binds= ["fall"]]

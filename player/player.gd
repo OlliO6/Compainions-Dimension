@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var jump_state: State = $StateMachine/Jump
 @onready var fall_state: State = $StateMachine/Fall
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_buffer_timer: Timer = $JumpBuffer
 @onready var jump_lenience_timer: Timer = $JumpLenience
 
@@ -29,12 +30,16 @@ func _physics_process(delta: float) -> void:
 			_grounded()
 			
 		run_state:
-			if _move_horizontal(movement_speed, acceleration, deceleration, delta) == 0:
+			var input:= _move_horizontal(movement_speed, acceleration, deceleration, delta)
+			if input == 0:
 				state_machine.switch_state(idle_state)
+			else:
+				animated_sprite.flip_h = input < 0
 			_grounded()
 		
 		fall_state:
 			velocity.y += gravity * delta
+			animated_sprite.flip_h = velocity.x < 0
 			if !jump_buffer_timer.is_stopped() && !jump_lenience_timer.is_stopped():
 				jump()
 			if is_on_floor():
@@ -79,4 +84,4 @@ func _grounded() -> void:
 		jump()
 
 func _on_state_machine_state_switched(to_state: State, from_state: State) -> void:
-	$Label.text = to_state.name
+	pass
