@@ -2164,13 +2164,13 @@ size = Vector2(160, 80)
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, -4)
+position = Vector2(-1, -26)
 zoom = Vector2(1.4, 1.4)
 process_callback = 0
 limit_left = -84
-limit_top = -52
+limit_top = -60
 limit_right = 76
-limit_bottom = 44
+limit_bottom = 20
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("1_t2ycg")
@@ -2182,7 +2182,7 @@ position = Vector2(-20, -4)
 
 [node name="PhantomCamera2D" type="Node2D" parent="Room1"]
 process_mode = 3
-position = Vector2(-1, -4)
+position = Vector2(-1, -26)
 script = ExtResource("2_wbjn8")
 priority_override = false
 priority = 0
@@ -2298,7 +2298,7 @@ position = Vector2(-4, -20)
 shape = SubResource("RectangleShape2D_hr0kf")
 
 [node name="Wheel" parent="Room2" instance=ExtResource("6_htbea")]
-position = Vector2(-52, -140)
+position = Vector2(-52, -36)
 can_sleep = false
 linear_damp = 1.0
 

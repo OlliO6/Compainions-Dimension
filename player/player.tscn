@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cncdidyn78bag"]
+[gd_scene load_steps=13 format=3 uid="uid://cncdidyn78bag"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a0pjx"]
 [ext_resource type="Script" path="res://components/state_machine.gd" id="2_6hmt5"]
@@ -12,6 +12,10 @@ region = Rect2(16, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pigsv"]
 atlas = ExtResource("4_yb682")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf7d7"]
+atlas = ExtResource("4_yb682")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbq8n"]
 atlas = ExtResource("4_yb682")
@@ -38,10 +42,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pigsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf7d7")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 0.8
 }, {
 "frames": [{
 "duration": 1.0,
@@ -102,6 +109,7 @@ modulate = Color(0.509804, 0.635294, 0.356863, 1)
 sprite_frames = SubResource("SpriteFrames_j6wfr")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.811429
 offset = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
