@@ -39,7 +39,8 @@ func _physics_process(delta: float) -> void:
 		
 		fall_state:
 			velocity.y += gravity * delta
-			animated_sprite.flip_h = velocity.x < 0
+			if abs(velocity.x) > 0.01:
+				animated_sprite.flip_h = velocity.x < 0
 			if !jump_buffer_timer.is_stopped() && !jump_lenience_timer.is_stopped():
 				jump()
 			if is_on_floor():
