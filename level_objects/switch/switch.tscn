@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51mta"]
 shader = ExtResource("2_ds4g8")
-shader_parameter/color = Color(0.509804, 0.635294, 0.356863, 1)
+shader_parameter/color = Color(0.662745, 0.392157, 0.721569, 1)
 shader_parameter/outline_color = Color(0, 0, 0, 0)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0

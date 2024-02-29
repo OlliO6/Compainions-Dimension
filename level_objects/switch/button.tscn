@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 shader = ExtResource("2_b8es2")
 shader_parameter/color = Color(0.662745, 0.392157, 0.721569, 1)
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 0)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
