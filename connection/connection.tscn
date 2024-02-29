@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bphpaukhme87m"]
+
+[ext_resource type="Script" path="res://connection/connection.gd" id="1_0cdws"]
+[ext_resource type="Shader" path="res://connection/connection.gdshader" id="1_37puk"]
+
+[sub_resource type="Gradient" id="Gradient_hbudj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.537549, 0.83004)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aa2ys"]
+frequency = 0.056
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4geyc"]
+width = 256
+height = 256
+seamless = true
+color_ramp = SubResource("Gradient_hbudj")
+noise = SubResource("FastNoiseLite_aa2ys")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw7bo"]
+shader = ExtResource("1_37puk")
+shader_parameter/start_color = Color(0.509804, 0.635294, 0.356863, 1)
+shader_parameter/end_color = Color(0.662745, 0.392157, 0.721569, 1)
+shader_parameter/border_size = 0.465
+shader_parameter/alpha = 0.3
+shader_parameter/noise_speed = 0.03
+shader_parameter/fps = 30.0
+shader_parameter/noise_1 = SubResource("NoiseTexture2D_4geyc")
+
+[node name="Connection" type="Line2D"]
+modulate = Color(1, 1, 1, 0.5)
+z_index = 2
+material = SubResource("ShaderMaterial_gw7bo")
+points = PackedVector2Array(0, 0, 52, 7)
+width = 4.0
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_0cdws")

@@ -17,3 +17,9 @@ extends StaticBody2D
 		(func():
 			$Sprite2D.frame = 0 if v else 1
 			$CollisionShape2D.disabled = !is_active).call_deferred()
+
+func set_active(active: bool) -> void:
+	is_active = active
+
+func set_deactived(deactived: bool) -> void:
+	is_active = !deactived

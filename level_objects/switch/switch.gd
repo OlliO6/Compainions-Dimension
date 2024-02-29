@@ -3,6 +3,8 @@ extends Area2D
 
 signal switched(active: bool)
 
+@onready var connection_emitter: ConnectionEmitter = $ConnectionEmitter
+
 # 0: all 1: player 2: other
 @export_enum("All", "Player", "Other") var dimension: int:
 	set(v):
@@ -22,6 +24,7 @@ signal switched(active: bool)
 		(func():
 			$Sprite2D.flip_h = v).call_deferred()
 		switched.emit(v)
+		connection_emitter.emit_toggled(v)
 
 var player_in_area: bool:
 	set(v):
