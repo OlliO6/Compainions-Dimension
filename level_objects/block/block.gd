@@ -1,4 +1,5 @@
 @tool
+class_name Block
 extends StaticBody2D
 
 # 0: all 1: player 2: other
@@ -11,15 +12,14 @@ extends StaticBody2D
 			set_collision_layer_value(3, dimension == 2)
 			$Sprite2D.modulate = GlobalClass.dimension_colors[dimension]).call_deferred()
 
-@export var is_active: bool:
+@export var is_solid: bool:
 	set(v):
-		is_active = v
+		is_solid = v
+		if has_node("GPUParticles2D"):
+			$GPUParticles2D.restart()
 		(func():
 			$Sprite2D.frame = 0 if v else 1
-			$CollisionShape2D.disabled = !is_active).call_deferred()
+			$CollisionShape2D.disabled = !is_solid).call_deferred()
 
-func set_active(active: bool) -> void:
-	is_active = active
-
-func set_deactived(deactived: bool) -> void:
-	is_active = !deactived
+func set_solid(solid: bool) -> void:
+	is_solid = solid

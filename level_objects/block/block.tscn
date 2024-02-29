@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://rolj7uqgw10i"]
+[gd_scene load_steps=7 format=3 uid="uid://rolj7uqgw10i"]
 
 [ext_resource type="Texture2D" uid="uid://cw2lpt7s050bm" path="res://level_objects/block/block.png" id="1_hc6p2"]
 [ext_resource type="Script" path="res://level_objects/block/block.gd" id="1_w43n0"]
@@ -6,10 +6,28 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho1qr"]
 size = Vector2(6, 6)
 
+[sub_resource type="Curve" id="Curve_35wfh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.83698, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cbjq0"]
+curve = SubResource("Curve_35wfh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rhsoj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.29
+spread = 180.0
+flatness = 0.749
+initial_velocity_min = 15.47
+initial_velocity_max = 33.45
+gravity = Vector3(0, 12, 0)
+alpha_curve = SubResource("CurveTexture_cbjq0")
+
 [node name="Block" type="StaticBody2D"]
 position = Vector2(4, 12)
 script = ExtResource("1_w43n0")
-is_active = true
+is_solid = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.176471, 0.780392, 0.666667, 1)
@@ -19,3 +37,9 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(0.662745, 0.392157, 0.721569, 1)
 shape = SubResource("RectangleShape2D_ho1qr")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_rhsoj")
+one_shot = true
+explosiveness = 0.9

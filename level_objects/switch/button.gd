@@ -1,10 +1,10 @@
 @tool
 extends Area2D
 
-signal switched(active: bool)
-signal switched_rev(deactive: bool)
-signal activated
-signal deactivated
+signal pressed
+signal unpressed
+
+@export var multiple_presses: bool = true
 
 # 0: all 1: player 2: other
 @export_enum("All", "Player", "Other") var dimension: int:
@@ -19,17 +19,10 @@ signal deactivated
 			set_collision_mask_value(3, dimension == 2)
 			$Sprite2D.material.set("shader_parameter/color", GlobalClass.dimension_colors[dimension])).call_deferred()
 
-@export var is_actived: bool:
+var is_pressed: bool:
 	set(v):
-		(func():
-			$Sprite2D.flip_h = v).call_deferred()
-		if v == is_actived:
-			return
-			
-		is_actived = v
-		switched.emit(v)
-		switched_rev.emit(!v)
-		(activated if v else deactivated).emit()
+		is_pressed = v
+		($Sprite2D as Sprite2D).frame = int(v)
 
 var player_in_area: bool:
 	set(v):
@@ -41,15 +34,28 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
+func press() -> void:
+	if is_pressed:
+		return
+	
+	is_pressed = true
+	pressed.emit()
+	if multiple_presses:
+		$Timer.start()
+
+func unpress() -> void:
+	is_pressed = false
+	unpressed.emit()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if player_in_area && !event.is_echo() && event.is_action_pressed("interact"):
-		is_actived = !is_actived
+		press()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_area = true
 	elif body.is_in_group("interact"):
-		is_actived = !is_actived
+		press()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:

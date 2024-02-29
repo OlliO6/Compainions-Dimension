@@ -10,7 +10,7 @@ uniform vec2 number_of_images = vec2(1.0); // number of horizontal and vertical 
 
 void vertex() {
 	if (add_margins) {
-		VERTEX += sign(VERTEX) * width; // replace `sign(VERTEX)` by `sign(VERTEX * 2.0 - 1.0)` if not centered
+		VERTEX += sign(VERTEX * 2.0 - 1.0) * width; // replace `sign(VERTEX)` by `sign(VERTEX * 2.0 - 1.0)` if not centered
 	}
 }
 
