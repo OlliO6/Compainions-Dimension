@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cncdidyn78bag"]
+[gd_scene load_steps=17 format=3 uid="uid://cncdidyn78bag"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a0pjx"]
 [ext_resource type="Script" path="res://components/state_machine.gd" id="2_6hmt5"]
 [ext_resource type="Script" path="res://components/state.gd" id="3_vy477"]
 [ext_resource type="Texture2D" uid="uid://bw1cfgkugd7i6" path="res://player/player.png" id="4_yb682"]
+[ext_resource type="AudioStream" uid="uid://d060d8wwx1unb" path="res://sounds/jump.wav" id="5_wsl1t"]
+[ext_resource type="AudioStream" uid="uid://cm5hdbqrts1qh" path="res://sounds/land.wav" id="6_e1d5u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m24vn"]
 atlas = ExtResource("4_yb682")
@@ -73,6 +75,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pyf4"]
 size = Vector2(6, 8)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qsuvk"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_wsl1t")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l41pc"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("6_e1d5u")
+stream_0/weight = 1.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 10
@@ -109,7 +123,7 @@ modulate = Color(0.509804, 0.635294, 0.356863, 1)
 sprite_frames = SubResource("SpriteFrames_j6wfr")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.811429
+frame_progress = 0.235592
 offset = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -125,6 +139,15 @@ one_shot = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_qsuvk")
+volume_db = -10.824
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_l41pc")
+volume_db = -10.824
+pitch_scale = 1.2
 
 [connection signal="state_switched" from="StateMachine" to="." method="_on_state_machine_state_switched"]
 [connection signal="state_entered" from="StateMachine/Idle" to="AnimatedSprite2D" method="play" binds= ["idle"]]

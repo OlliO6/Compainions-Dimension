@@ -40,6 +40,7 @@ func press() -> void:
 	
 	is_pressed = true
 	pressed.emit()
+	$AudioStreamPlayer.play()
 	if multiple_presses:
 		$Timer.start()
 

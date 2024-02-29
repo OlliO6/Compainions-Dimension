@@ -11,9 +11,7 @@
 			"uuid": "d10eeafc-dda6-4f76-8a4c-e3304b3531e6",
 			"title": "Todo",
 			"tasks": [
-				"929de8c0-8e19-4df0-b27b-27aa119b5323",
-				"00bf02b9-d40b-4168-8562-e8871e480dad",
-				"cd027b15-4832-4cff-9479-e1979f6093cd"
+				"13c23acc-7f29-4954-86de-1daf094c12dc"
 			]
 		},
 		{
@@ -24,7 +22,10 @@
 		{
 			"uuid": "52e30ded-091d-4f98-9d08-e8c146f8a0f4",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"929de8c0-8e19-4df0-b27b-27aa119b5323",
+				"cd027b15-4832-4cff-9479-e1979f6093cd"
+			]
 		},
 		{
 			"uuid": "dcc475f9-f3a1-4041-acd6-7114dc020f82",
@@ -50,20 +51,15 @@
 			"steps": []
 		},
 		{
-			"uuid": "00bf02b9-d40b-4168-8562-e8871e480dad",
-			"title": "Add connections",
-			"description": "",
-			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
-			"steps": [
-				{
-					"details": "connection listener interface",
-					"done": false
-				}
-			]
-		},
-		{
 			"uuid": "cd027b15-4832-4cff-9479-e1979f6093cd",
 			"title": "Level Boundries",
+			"description": "",
+			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
+			"steps": []
+		},
+		{
+			"uuid": "13c23acc-7f29-4954-86de-1daf094c12dc",
+			"title": "Bounce Pad",
 			"description": "",
 			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
 			"steps": []

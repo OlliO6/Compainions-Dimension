@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal jumped
+
 @export var movement_speed: float = 10
 @export var jump_velocity: float = 10
 @export_range(0, 1) var acceleration: float = 0.5
@@ -45,6 +47,8 @@ func _physics_process(delta: float) -> void:
 				jump()
 			if is_on_floor():
 				state_machine.switch_state(idle_state)
+				$LandSound.volume_db = clamp(velocity.y - 30, -50, -5)
+				$LandSound.play()
 			_move_horizontal(movement_speed, air_acceleration, air_deceleration, delta)
 		
 		jump_state:
@@ -67,7 +71,9 @@ func jump() -> void:
 	jump_lenience_timer.stop()
 	velocity.y = -jump_velocity
 	state_machine.switch_state(jump_state)
-
+	jumped.emit()
+	$JumpSound.play()
+	
 # returns horizontal input
 func _move_horizontal(speed: float, accel: float, decel, delta: float) -> float:
 	var input:= Input.get_axis("left", "right")
