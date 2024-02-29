@@ -8,12 +8,11 @@ size = Vector2(6, 6)
 
 [node name="Block" type="StaticBody2D"]
 position = Vector2(4, 12)
-collision_layer = 0
 script = ExtResource("1_w43n0")
 is_active = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.662745, 0.392157, 0.721569, 1)
+modulate = Color(0.176471, 0.780392, 0.666667, 1)
 texture = ExtResource("1_hc6p2")
 hframes = 2
 

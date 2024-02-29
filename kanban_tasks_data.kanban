@@ -10,7 +10,11 @@
 		{
 			"uuid": "d10eeafc-dda6-4f76-8a4c-e3304b3531e6",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"929de8c0-8e19-4df0-b27b-27aa119b5323",
+				"00bf02b9-d40b-4168-8562-e8871e480dad",
+				"cd027b15-4832-4cff-9479-e1979f6093cd"
+			]
 		},
 		{
 			"uuid": "86408dd8-00bb-4cbb-b8b1-39e8882f129e",
@@ -35,6 +39,32 @@
 			"uuid": "5121dcfe-7031-4aee-a2a9-a3a13960befa",
 			"title": "Color Pallete",
 			"description": "#82A25B\n#A964B8\n#2DC7AA\n#393533",
+			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
+			"steps": []
+		},
+		{
+			"uuid": "929de8c0-8e19-4df0-b27b-27aa119b5323",
+			"title": "Add switches",
+			"description": "",
+			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
+			"steps": []
+		},
+		{
+			"uuid": "00bf02b9-d40b-4168-8562-e8871e480dad",
+			"title": "Add connections",
+			"description": "",
+			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
+			"steps": [
+				{
+					"details": "connection listener interface",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "cd027b15-4832-4cff-9479-e1979f6093cd",
+			"title": "Level Boundries",
+			"description": "",
 			"category": "3385f7cb-fc0c-4303-a4f9-a78ce4272c01",
 			"steps": []
 		}

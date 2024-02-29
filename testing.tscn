@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq2tfprdxdd3"]
+[gd_scene load_steps=15 format=3 uid="uid://bq2tfprdxdd3"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_t2ycg"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_wbjn8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cnjm5k5rtq0xn" path="res://level_objects/tileset/tileset.png" id="4_6cy8a"]
 [ext_resource type="PackedScene" uid="uid://76ntssdyopcx" path="res://level_objects/wheel.tscn" id="6_htbea"]
 [ext_resource type="PackedScene" uid="uid://rolj7uqgw10i" path="res://level_objects/block/block.tscn" id="7_rh48b"]
+[ext_resource type="Texture2D" uid="uid://dae88aaops1kl" path="res://level_objects/switch/switch.png" id="8_chdpc"]
+[ext_resource type="PackedScene" uid="uid://bke2mbnlprjy5" path="res://level_objects/switch/switch.tscn" id="9_abgn4"]
 
 [sub_resource type="Resource" id="Resource_sl4i3"]
 script = ExtResource("3_jthag")
@@ -2191,8 +2193,6 @@ inactive_update_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("3_h3th6")]
 position = Vector2(-13, -14)
-collision_layer = 8
-collision_mask = 3
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ev3d8")
@@ -2214,3 +2214,14 @@ dimension = 2
 position = Vector2(4, 4)
 collision_layer = 4
 dimension = 2
+
+[node name="Switch" type="Sprite2D" parent="."]
+modulate = Color(0.509804, 0.635294, 0.356863, 1)
+position = Vector2(12, -12)
+texture = ExtResource("8_chdpc")
+
+[node name="Switch2" parent="." instance=ExtResource("9_abgn4")]
+position = Vector2(-68, -20)
+collision_layer = 2
+collision_mask = 2
+dimension = 1

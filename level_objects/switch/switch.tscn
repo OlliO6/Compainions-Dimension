@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bke2mbnlprjy5"]
+
+[ext_resource type="Script" path="res://level_objects/switch/switch.gd" id="1_e7at4"]
+[ext_resource type="Texture2D" uid="uid://dae88aaops1kl" path="res://level_objects/switch/switch.png" id="2_ato1n"]
+[ext_resource type="Shader" path="res://shader/outline.gdshader" id="2_ds4g8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51mta"]
+shader = ExtResource("2_ds4g8")
+shader_parameter/color = Color(0.509804, 0.635294, 0.356863, 1)
+shader_parameter/outline_color = Color(0.176471, 0.780392, 0.666667, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd2vh"]
+size = Vector2(8, 4)
+
+[node name="Switch" type="Area2D"]
+z_index = -1
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_e7at4")
+dimension = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_51mta")
+texture = ExtResource("2_ato1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_rd2vh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
