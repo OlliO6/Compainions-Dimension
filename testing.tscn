@@ -2167,7 +2167,7 @@ sources/2 = SubResource("TileSetAtlasSource_b75su")
 size = Vector2(160, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lkip"]
-size = Vector2(159, 96)
+size = Vector2(159, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wybgd"]
 size = Vector2(176, 136)
@@ -2304,7 +2304,7 @@ stream = ExtResource("1_ijdon")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, -26)
+position = Vector2(-6, -26)
 zoom = Vector2(1.4, 1.4)
 process_callback = 0
 limit_left = -84
@@ -2316,13 +2316,13 @@ limit_bottom = 20
 script = ExtResource("1_t2ycg")
 
 [node name="Player" parent="." instance=ExtResource("3_h3th6")]
-position = Vector2(-12, -12)
+position = Vector2(604, 4)
 
 [node name="Room1" type="Node2D" parent="."]
 
 [node name="PhantomCamera2D" type="Node2D" parent="Room1"]
 process_mode = 3
-position = Vector2(-1, -26)
+position = Vector2(-6, -26)
 script = ExtResource("2_wbjn8")
 priority_override = false
 priority = 0
@@ -2698,58 +2698,88 @@ is_solid = true
 
 [node name="Block" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(-12, -20)
+collision_layer = 4
+dimension = 2
 
 [node name="Block2" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(-20, -20)
+collision_layer = 4
+dimension = 2
 
 [node name="Block6" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(-28, -36)
+collision_layer = 4
+dimension = 2
 
 [node name="Block7" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(-28, -44)
+collision_layer = 4
+dimension = 2
 
 [node name="Block3" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(-4, -20)
+collision_layer = 4
+dimension = 2
 
 [node name="Block4" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(20, -20)
+collision_layer = 4
+dimension = 2
 
 [node name="Block5" parent="Room4/BlockGroup" instance=ExtResource("7_rh48b")]
 position = Vector2(28, -20)
+collision_layer = 4
+dimension = 2
 
 [node name="BlockGroup2" type="Node2D" parent="Room4"]
 script = ExtResource("7_n4d8c")
 
 [node name="Block" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(4, -20)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block3" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(36, -20)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block4" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(44, -20)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block2" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(12, -20)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block5" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(52, -28)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block8" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(52, -20)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block6" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(52, -36)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Block7" parent="Room4/BlockGroup2" instance=ExtResource("7_rh48b")]
 position = Vector2(52, -44)
+collision_layer = 4
+dimension = 2
 is_solid = false
 
 [node name="Room5" type="Node2D" parent="."]
@@ -2781,10 +2811,10 @@ inactive_update_mode = 1
 tile_set = SubResource("TileSet_ev3d8")
 format = 2
 layer_0/name = "player_dimension"
-layer_0/tile_data = PackedInt32Array(262140, 65536, 1, 327676, 65536, 1, 327677, 65536, 1, 393213, 65536, 2, 393212, 65536, 2, 327675, 65536, 1, 262141, 65536, 1, 262139, 65536, 1, 327674, 65536, 1, 327673, 65536, 1, 196605, 65536, 0, 196606, 65536, 0, 262142, 65536, 1, 196604, 65536, 0, 131073, 65536, 0, 131072, 65536, 0, 196607, 65536, 0, 327678, 65536, 1, 393214, 65536, 2, 262143, 65536, 1, 327679, 65536, 1, 393215, 65536, 2, 262144, 65536, 1, 327680, 65536, 2, 327681, 65536, 2, 327682, 65536, 2, 327683, 65536, 2, 196608, 65536, 1, 196609, 65536, 1, 262145, 65536, 1, 262146, 65536, 1, 262147, 65536, 1, 262148, 65536, 1, 196610, 65536, 1, 131074, 65536, 0, 131075, 65536, 0, 196611, 65536, 1, 196601, 65536, 0, 196602, 65536, 0, 262137, 65536, 1, 196603, 65536, 0, 262138, 65536, 1, 393209, 65536, 2, 393210, 65536, 2, 393211, 65536, 2, 327684, 65536, 2, 196612, 65536, 1, 131076, 65536, 0, 131077, 65536, 0, 196613, 65536, 1, 262149, 65536, 1, 327685, 65536, 2, 327686, 65536, 2, 262150, 65536, 1, 196614, 65536, 1, 131078, 65536, 0, 196600, 65536, 0, 262136, 65536, 1, 327672, 65536, 1, 393208, 65536, 2, 327687, 65536, 2, 262151, 65536, 1, 196615, 65536, 1, 131079, 65536, 0, 196599, 65536, 0, 262135, 65536, 1, 327671, 65536, 1, 393207, 65536, 2, 393206, 65536, 2, 327670, 65536, 1, 262134, 65536, 1, 196598, 65536, 0, 131080, 65536, 0, 196616, 65536, 1, 262152, 65536, 1, 327688, 65536, 2, 393205, 0, 2, 327669, 0, 1, 262133, 0, 1, 196597, 0, 0, -393227, 0, 2, -393226, 65536, 2, -393225, 65536, 2, -393224, 524288, 1, -393223, 65536, 2, -393222, 65536, 2, -393221, 65536, 2, -393220, 65536, 2, -393219, 65536, 2, -393218, 65536, 2, -393217, 65536, 2, -458752, 65536, 2, -458751, 65536, 2, -458750, 65536, 2, -458749, 65536, 2, -458748, 65536, 2, -458747, 65536, 2, -458746, 65536, 2, -458745, 65536, 2, -458744, 65536, 2, -458743, 131072, 2, 131081, 131072, 0, 196617, 131072, 1, 262153, 131072, 1, 327689, 131072, 2, -524279, 131072, 0, -524280, 65536, 0, -524281, 65536, 0, -524282, 65536, 0, -524283, 65536, 0, -524284, 65536, 0, -524285, 65536, 0, -524286, 65536, 0, -524287, 65536, 0, -524288, 65536, 0, -458753, 65536, 0, -458754, 65536, 0, -458755, 65536, 0, -458756, 65536, 0, -458757, 65536, 0, -458758, 65536, 0, -458759, 65536, 0, -458760, 65536, 0, -458761, 65536, 0, -458762, 65536, 0, -458763, 0, 0, -196600, 2, 1, -262136, 2, 1, -327672, 2, 1, -393208, 2, 0, -393207, 131074, 0, -327671, 131074, 1, -262135, 131074, 1, -196599, 131074, 1, -327688, 196608, 1, -262152, 196608, 1, -196616, 196608, 2, -131066, 2, 3, -131065, 65538, 3, -131064, 393218, 3, -131063, 131074, 2)
+layer_0/tile_data = PackedInt32Array(393213, 65538, 3, 393212, 65538, 3, 327674, 131072, 1, 327673, 65536, 1, 393214, 65538, 3, 393215, 65538, 3, 327680, 65538, 3, 327681, 65538, 3, 327682, 65538, 3, 327683, 65538, 3, 196601, 65538, 3, 196602, 131074, 3, 262137, 65536, 0, 262138, 131072, 0, 393209, 65536, 1, 393210, 131072, 1, 393211, 2, 3, 131077, 0, 0, 196613, 0, 1, 327685, 0, 1, 327686, 65536, 1, 262150, 65536, 1, 196614, 65536, 1, 131078, 65536, 0, 196600, 65538, 3, 262136, 65536, 0, 327672, 65536, 1, 393208, 65536, 1, 327687, 65536, 1, 262151, 65536, 1, 196615, 65536, 1, 131079, 65536, 0, 196599, 65538, 3, 262135, 65536, 0, 327671, 65536, 1, 393207, 65536, 1, 393206, 65536, 1, 327670, 65536, 1, 262134, 65536, 0, 196598, 65538, 3, 131080, 65536, 0, 196616, 65536, 1, 262152, 65536, 1, 327688, 65536, 1, 393205, 0, 1, 327669, 0, 1, 262133, 0, 0, 196597, 2, 3, -393227, 0, 2, -393226, 65536, 2, -393225, 65536, 2, -393224, 65536, 2, -393223, 65536, 2, -393222, 65536, 2, -393221, 65536, 2, -393220, 65536, 2, -393219, 65536, 2, -393218, 65536, 2, -393217, 65536, 2, -458752, 65536, 2, -458751, 65536, 2, -458750, 65536, 2, -458749, 65536, 2, -458748, 65536, 2, -458747, 65536, 2, -458746, 65536, 2, -458745, 65536, 2, -458744, 393216, 1, -458743, 131072, 1, 131081, 131072, 0, 196617, 131072, 1, 262153, 131072, 1, 327689, 131072, 1, -524279, 131072, 0, -524280, 65536, 0, -524281, 65536, 0, -524282, 65536, 0, -524283, 65536, 0, -524284, 65536, 0, -524285, 65536, 0, -524286, 65536, 0, -524287, 65536, 0, -524288, 65536, 0, -458753, 65536, 0, -458754, 65536, 0, -458755, 65536, 0, -458756, 65536, 0, -458757, 65536, 0, -458758, 65536, 0, -458759, 65536, 0, -458760, 65536, 0, -458761, 65536, 0, -458762, 65536, 0, -458763, 0, 0, -196600, 0, 1, -262136, 0, 1, -327672, 0, 1, -393208, 0, 1, -393207, 131072, 1, -327671, 131072, 1, -262135, 131072, 1, -196599, 131072, 1, -131064, 0, 2, -131063, 131072, 2, 458741, 0, 1, 458742, 65536, 1, 458743, 65536, 1, 458744, 65536, 1, 458749, 65536, 0, 458750, 65536, 0, 458751, 65536, 0, 393216, 65536, 0, 393217, 65536, 0, 393218, 65536, 0, 393219, 65536, 0, 393220, 65536, 0, 393221, 393216, 2, 393222, 65536, 1, 393223, 65536, 1, 393224, 65536, 1, 393225, 131072, 1, 458754, 65536, 2, 458753, 65536, 2, 524287, 65536, 2, 458752, 65536, 2, 524286, 65536, 2, 524285, 65536, 2, 524284, 65536, 2, 524283, 65536, 2, 524282, 65536, 2, 524281, 65536, 2, 524280, 65536, 2, 458745, 65536, 1, 458746, 327680, 2, 458747, 65536, 0, 458748, 65536, 0, 524279, 65536, 2, 524278, 65536, 2, 524277, 0, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 65536, 2, 458761, 131072, 2, 262149, 0, 1, 327684, 131074, 3)
 layer_1/name = "other_dimension"
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-196615, 1, 3, -196614, 65537, 3, -196613, 65537, 3, -196612, 131073, 3)
+layer_1/tile_data = PackedInt32Array()
 
 [node name="Bounds" type="Area2D" parent="Room5" node_paths=PackedStringArray("room_cam")]
 collision_layer = 0
@@ -2794,44 +2824,21 @@ script = ExtResource("6_lsown")
 room_cam = NodePath("../PhantomCamera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room5/Bounds"]
-position = Vector2(-4.5, -12)
+position = Vector2(-4.5, -4)
 shape = SubResource("RectangleShape2D_7lkip")
 
-[node name="BlockGroup3" type="Node2D" parent="Room5"]
-position = Vector2(8, 0)
-script = ExtResource("7_n4d8c")
-is_solid = true
+[node name="Switch" parent="Room5" instance=ExtResource("14_ewbw0")]
+position = Vector2(12, 36)
+collision_layer = 1
+collision_mask = 7
+dimension = 0
 
-[node name="Block" parent="Room5/BlockGroup3" instance=ExtResource("7_rh48b")]
-position = Vector2(60, 12)
-collision_layer = 2
-dimension = 1
-
-[node name="Block2" parent="Room5/BlockGroup3" instance=ExtResource("7_rh48b")]
-position = Vector2(60, 4)
-collision_layer = 2
-dimension = 1
-
-[node name="Block3" parent="Room5/BlockGroup3" instance=ExtResource("7_rh48b")]
-position = Vector2(60, -4)
-collision_layer = 2
-dimension = 1
-
-[node name="Button2" parent="Room5" instance=ExtResource("9_jecvl")]
-position = Vector2(12, 12)
+[node name="Button3" parent="Room5" instance=ExtResource("9_jecvl")]
+position = Vector2(36, 36)
 collision_layer = 2
 collision_mask = 2
 multiple_presses = true
-down_time = 5.0
-dimension = 1
-
-[node name="Button3" parent="Room5" instance=ExtResource("9_jecvl")]
-position = Vector2(60, -20)
-
-[node name="Switch" parent="Room5" instance=ExtResource("14_ewbw0")]
-position = Vector2(-28, 12)
-collision_layer = 2
-collision_mask = 2
+down_time = 10.0
 dimension = 1
 
 [node name="WheelSpawner" type="Node2D" parent="Room5"]
@@ -2840,63 +2847,25 @@ script = ExtResource("13_mdsti")
 
 [node name="BlockGroup" type="Node2D" parent="Room5"]
 script = ExtResource("7_n4d8c")
-is_solid = true
 
 [node name="Block" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(-12, -20)
-
-[node name="Block2" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(-20, -20)
-
-[node name="Block6" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(-28, -36)
-
-[node name="Block7" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(-28, -44)
+position = Vector2(-4, 36)
+is_solid = false
 
 [node name="Block3" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(-4, -20)
+position = Vector2(-4, 28)
+is_solid = false
 
 [node name="Block4" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(20, -20)
-
-[node name="Block5" parent="Room5/BlockGroup" instance=ExtResource("7_rh48b")]
-position = Vector2(28, -20)
-
-[node name="BlockGroup2" type="Node2D" parent="Room5"]
-script = ExtResource("7_n4d8c")
-
-[node name="Block" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(4, -20)
+position = Vector2(-4, 20)
 is_solid = false
 
-[node name="Block3" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(36, -20)
-is_solid = false
-
-[node name="Block4" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(44, -20)
-is_solid = false
-
-[node name="Block2" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(12, -20)
-is_solid = false
-
-[node name="Block5" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(52, -28)
-is_solid = false
-
-[node name="Block8" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(52, -20)
-is_solid = false
-
-[node name="Block6" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(52, -36)
-is_solid = false
-
-[node name="Block7" parent="Room5/BlockGroup2" instance=ExtResource("7_rh48b")]
-position = Vector2(52, -44)
-is_solid = false
+[node name="BouncePad" parent="Room5" instance=ExtResource("12_cehdp")]
+modulate = Color(0.509804, 0.635294, 0.356863, 1)
+position = Vector2(-36, 36)
+collision_layer = 2
+collision_mask = 2
+dimension = 1
 
 [node name="Room6" type="Node2D" parent="."]
 position = Vector2(848, 32)
@@ -3122,10 +3091,8 @@ dimension = 1
 [connection signal="pressed" from="Room4/Button3" to="Room4/BlockGroup3" method="set_solid" binds= [false]]
 [connection signal="switched" from="Room4/Switch" to="Room4/BlockGroup2" method="set_solid"]
 [connection signal="switched_rev" from="Room4/Switch" to="Room4/BlockGroup" method="set_solid"]
-[connection signal="pressed" from="Room5/Button2" to="Room5/WheelSpawner" method="spawn_wheel"]
-[connection signal="pressed" from="Room5/Button3" to="Room5/BlockGroup3" method="set_solid" binds= [false]]
-[connection signal="switched" from="Room5/Switch" to="Room5/BlockGroup2" method="set_solid"]
-[connection signal="switched_rev" from="Room5/Switch" to="Room5/BlockGroup" method="set_solid"]
+[connection signal="switched" from="Room5/Switch" to="Room5/BlockGroup" method="set_solid"]
+[connection signal="pressed" from="Room5/Button3" to="Room5/WheelSpawner" method="spawn_wheel"]
 [connection signal="pressed" from="Room6/Button" to="Room6/WheelSpawner" method="spawn_wheel"]
 [connection signal="switched" from="Room6/Switch" to="Room6/BlockGroup4" method="set_solid"]
 [connection signal="switched_rev" from="Room6/Switch" to="Room6/BlockGroup3" method="set_solid"]

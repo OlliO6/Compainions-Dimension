@@ -98,7 +98,7 @@ acceleration = 0.15
 deceleration = 0.1
 air_acceleration = 0.05
 air_deceleration = 0.05
-gravity = 130.0
+gravity = 150.0
 jump_gravity = 100.0
 jump_cancel_strenght = 0.3
 
