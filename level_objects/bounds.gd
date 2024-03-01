@@ -29,7 +29,7 @@ func _on_player_entered() -> void:
 	get_parent().process_mode = Node.PROCESS_MODE_INHERIT
 	
 	if room_cam:
-		if current_room_cam:
+		if is_instance_valid(current_room_cam):
 			current_room_cam.set_priority(0)
 			
 		room_cam.set_priority(5)
