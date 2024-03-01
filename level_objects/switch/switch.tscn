@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bke2mbnlprjy5"]
+[gd_scene load_steps=8 format=3 uid="uid://bke2mbnlprjy5"]
 
 [ext_resource type="Script" path="res://level_objects/switch/switch.gd" id="1_e7at4"]
 [ext_resource type="Texture2D" uid="uid://dae88aaops1kl" path="res://level_objects/switch/switch.png" id="2_ato1n"]
 [ext_resource type="Shader" path="res://shader/outline.gdshader" id="2_ds4g8"]
+[ext_resource type="AudioStream" uid="uid://db2w0egtrrjnv" path="res://sounds/blip_select.wav" id="4_p7eku"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51mta"]
 shader = ExtResource("2_ds4g8")
-shader_parameter/color = Color(0.662745, 0.392157, 0.721569, 1)
+shader_parameter/color = Color(0.176471, 0.780392, 0.666667, 1)
 shader_parameter/outline_color = Color(0, 0, 0, 0)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -16,6 +17,11 @@ shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rd2vh"]
 size = Vector2(8, 4)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3bhru"]
+streams_count = 1
+stream_0/stream = ExtResource("4_p7eku")
+stream_0/weight = 1.0
 
 [node name="Switch" type="Area2D"]
 z_index = -1
@@ -31,3 +37,6 @@ texture = ExtResource("2_ato1n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_rd2vh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3bhru")

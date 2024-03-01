@@ -10,8 +10,8 @@ extends Area2D
 		set_collision_layer_value(2, dimension == 1)
 		set_collision_layer_value(3, dimension == 2)
 		set_collision_mask_value(1, dimension == 0)
-		set_collision_mask_value(2, dimension == 1)
-		set_collision_mask_value(3, dimension == 2)
+		set_collision_mask_value(2, dimension == 1 || dimension == 0)
+		set_collision_mask_value(3, dimension == 2 || dimension == 0)
 		modulate = GlobalClass.dimension_colors[dimension]
 
 @export var is_active: bool:
@@ -23,7 +23,10 @@ func _ready() -> void:
 
 func set_active(v):
 	is_active = v
-	$GPUParticles2D.emitting = v
+	if is_active:
+		for i in get_overlapping_bodies():
+			_on_body_entered(i)
+	(func(): $GPUParticles2D.emitting = v).call_deferred()
 
 func _on_body_entered(body: Node2D) -> void:
 	if !is_active:
@@ -33,4 +36,4 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().physics_frame
 		body.bounce(boost)
 	elif body is RigidBody2D:
-		body.apply_central_impulse(Vector2.UP * boost)
+		body.linear_velocity.y = -boost

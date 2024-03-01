@@ -5,6 +5,7 @@ signal pressed
 signal unpressed
 
 @export var multiple_presses: bool = true
+@export var down_time: float = 0.5
 
 # 0: all 1: player 2: other
 @export_enum("All", "Player", "Other") var dimension: int:
@@ -15,8 +16,8 @@ signal unpressed
 			set_collision_layer_value(2, dimension == 1)
 			set_collision_layer_value(3, dimension == 2)
 			set_collision_mask_value(1, dimension == 0)
-			set_collision_mask_value(2, dimension == 1)
-			set_collision_mask_value(3, dimension == 2)
+			set_collision_mask_value(2, dimension == 1 || dimension == 0)
+			set_collision_mask_value(3, dimension == 2 || dimension == 0)
 			$Sprite2D.material.set("shader_parameter/color", GlobalClass.dimension_colors[dimension])).call_deferred()
 
 var is_pressed: bool:
@@ -42,7 +43,7 @@ func press() -> void:
 	pressed.emit()
 	$AudioStreamPlayer.play()
 	if multiple_presses:
-		$Timer.start()
+		$Timer.start(down_time)
 
 func unpress() -> void:
 	is_pressed = false

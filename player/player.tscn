@@ -149,7 +149,7 @@ volume_db = -10.824
 
 [node name="LandSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_l41pc")
-volume_db = -10.824
+volume_db = -12.0
 pitch_scale = 1.2
 
 [connection signal="state_switched" from="StateMachine" to="." method="_on_state_machine_state_switched"]

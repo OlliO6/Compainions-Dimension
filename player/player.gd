@@ -48,7 +48,6 @@ func _physics_process(delta: float) -> void:
 				jump()
 			if is_on_floor():
 				state_machine.switch_state(idle_state)
-				$LandSound.volume_db = clamp(velocity.y - 30, -50, -5)
 				$LandSound.play()
 			_move_horizontal(movement_speed, air_acceleration, air_deceleration, delta)
 		

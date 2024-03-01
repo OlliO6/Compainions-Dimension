@@ -15,8 +15,8 @@ signal deactivated
 			set_collision_layer_value(2, dimension == 1)
 			set_collision_layer_value(3, dimension == 2)
 			set_collision_mask_value(1, dimension == 0)
-			set_collision_mask_value(2, dimension == 1)
-			set_collision_mask_value(3, dimension == 2)
+			set_collision_mask_value(2, dimension == 1 || dimension == 0)
+			set_collision_mask_value(3, dimension == 2 || dimension == 0)
 			$Sprite2D.material.set("shader_parameter/color", GlobalClass.dimension_colors[dimension])).call_deferred()
 
 @export var is_actived: bool:
@@ -41,15 +41,19 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
+func switch() -> void:
+	is_actived = !is_actived
+	$AudioStreamPlayer.play()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if player_in_area && !event.is_echo() && event.is_action_pressed("interact"):
-		is_actived = !is_actived
+		switch()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_area = true
 	elif body.is_in_group("interact"):
-		is_actived = !is_actived
+		switch()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:

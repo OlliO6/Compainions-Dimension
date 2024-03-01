@@ -20,7 +20,7 @@ size = Vector2(6, 2)
 gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
 script = ExtResource("1_yfn13")
-boost = 80.0
+boost = 82.0
 is_active = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
