@@ -115,6 +115,9 @@ script = ExtResource("3_vy477")
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("3_vy477")
 
+[node name="Bounce" type="Node" parent="StateMachine"]
+script = ExtResource("3_vy477")
+
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("3_vy477")
 
@@ -123,7 +126,7 @@ modulate = Color(0.509804, 0.635294, 0.356863, 1)
 sprite_frames = SubResource("SpriteFrames_j6wfr")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.235592
+frame_progress = 0.329381
 offset = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -153,4 +156,5 @@ pitch_scale = 1.2
 [connection signal="state_entered" from="StateMachine/Idle" to="AnimatedSprite2D" method="play" binds= ["idle"]]
 [connection signal="state_entered" from="StateMachine/Run" to="AnimatedSprite2D" method="play" binds= ["run"]]
 [connection signal="state_entered" from="StateMachine/Jump" to="AnimatedSprite2D" method="play" binds= ["jump"]]
+[connection signal="state_entered" from="StateMachine/Bounce" to="AnimatedSprite2D" method="play" binds= ["jump"]]
 [connection signal="state_entered" from="StateMachine/Fall" to="AnimatedSprite2D" method="play" binds= ["fall"]]

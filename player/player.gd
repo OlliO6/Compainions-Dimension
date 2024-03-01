@@ -18,6 +18,7 @@ signal jumped
 @onready var run_state: State = $StateMachine/Run
 @onready var jump_state: State = $StateMachine/Jump
 @onready var fall_state: State = $StateMachine/Fall
+@onready var bounce_state: State = $StateMachine/Bounce
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_buffer_timer: Timer = $JumpBuffer
@@ -59,12 +60,25 @@ func _physics_process(delta: float) -> void:
 			if velocity.y > 0:
 				state_machine.switch_state(fall_state)
 			_move_horizontal(movement_speed, air_acceleration, air_deceleration, delta)
+		
+		bounce_state:
+			velocity.y += jump_gravity * delta
+			if velocity.y > 0:
+				state_machine.switch_state(fall_state)
+			_move_horizontal(movement_speed, air_acceleration, air_deceleration, delta)
 	
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !event.is_echo() && event.is_action_pressed("jump"):
 		jump_buffer_timer.start()
+
+func bounce(velo: float) -> void:
+	jump_buffer_timer.stop()
+	jump_lenience_timer.stop()
+	velocity.y = -velo
+	state_machine.switch_state(bounce_state)
+	$JumpSound.play()
 
 func jump() -> void:
 	jump_buffer_timer.stop()

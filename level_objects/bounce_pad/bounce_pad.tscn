@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2m5xsyxb881p"]
+
+[ext_resource type="Script" path="res://level_objects/bounce_pad/bounce_pad.gd" id="1_yfn13"]
+[ext_resource type="Texture2D" uid="uid://djvwkva5dmh63" path="res://level_objects/switch/button.png" id="2_h8u5c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xcdb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 0, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 15.08
+initial_velocity_max = 30.15
+gravity = Vector3(0, 24, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xws4v"]
+size = Vector2(6, 2)
+
+[node name="BouncePad" type="Area2D"]
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+script = ExtResource("1_yfn13")
+boost = 80.0
+is_active = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_h8u5c")
+hframes = 2
+frame = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_8xcdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_xws4v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
