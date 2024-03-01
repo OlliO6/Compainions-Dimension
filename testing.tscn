@@ -2304,7 +2304,7 @@ stream = ExtResource("1_ijdon")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-6, -26)
+position = Vector2(-1, -26)
 zoom = Vector2(1.4, 1.4)
 process_callback = 0
 limit_left = -84
@@ -2316,13 +2316,13 @@ limit_bottom = 20
 script = ExtResource("1_t2ycg")
 
 [node name="Player" parent="." instance=ExtResource("3_h3th6")]
-position = Vector2(604, 4)
+position = Vector2(-20, -4)
 
 [node name="Room1" type="Node2D" parent="."]
 
 [node name="PhantomCamera2D" type="Node2D" parent="Room1"]
 process_mode = 3
-position = Vector2(-6, -26)
+position = Vector2(-1, -26)
 script = ExtResource("2_wbjn8")
 priority_override = false
 priority = 0
